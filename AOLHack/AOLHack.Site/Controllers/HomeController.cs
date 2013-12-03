@@ -16,5 +16,9 @@ namespace AOLHack.Site.Controllers
             return View();
         }
 
+        public ActionResult Curator()
+        {
+            return View();
+        }
     }
 }
