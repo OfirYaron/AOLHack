@@ -207,6 +207,8 @@
     <Content Include="Views\View\Curator.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Welcome.cshtml" />
+    <Content Include="Views\Shared\_Slim.cshtml" />
+    <Content Include="Views\View\Watch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Management\Index.cshtml" />
