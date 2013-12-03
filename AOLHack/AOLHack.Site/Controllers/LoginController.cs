@@ -22,11 +22,16 @@ namespace AOLHack.Site.Controllers
         public ActionResult Index(FormCollection form)//FormCollection form)
         {
             var context = new AOLHackEntities();
-            var loggedinUser = context.Users.Where(u => u.Email == form["email"]);
+            var users = context.Users.ToList();
+            var loggedinUser = users.FirstOrDefault(u => u.Email == form["email"]);
 
+            if (loggedinUser == null)
+            {
+                // sign up in future
+            }
 
             StateAgent.CurrentViewer = loggedinUser as Viewer;
-            return RedirectToAction("Curate", "View", null);
+            return RedirectToAction("Curator", "View", null);
         }
 
     }
