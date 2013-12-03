@@ -27,5 +27,28 @@ namespace AOLHack.Site.Controllers
             return View();
         }
 
+        public ActionResult Like()
+        {
+            if (StateAgent.CurrentLocation== null)
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+
+            StateAgent.CurrentLocation.CurrentlyPlayed.CurrentRating++;
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Dislike()
+        {
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult RequestSkip()
+        {
+            if (StateAgent.CurrentLocation == null)
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+
+            StateAgent.CurrentLocation.CurrentlyPlayed.SkipRequests++;
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

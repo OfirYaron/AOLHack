@@ -6,7 +6,7 @@ using System.Web;
 namespace AOLHack.Site
 {
     public static class StateAgent
-    {
+    {   
         static StateAgent()
         {
             Locations = new List<ActiveLocation>();
