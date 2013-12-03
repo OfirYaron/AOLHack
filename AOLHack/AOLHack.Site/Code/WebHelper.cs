@@ -46,7 +46,7 @@ namespace AOLHack.Site.Code
 
                 return string.Empty;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 string message = "URL: " + url;
 

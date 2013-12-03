@@ -15,47 +15,79 @@ namespace AOLHack.Site.Controllers
     {
         //
         // GET: /View/
-        public WebRequest OriginalRequest { get; set; }
-        public WebResponse Response { get; set; }
-        public HttpWebRequest HttpRequest { get { return (HttpWebRequest)OriginalRequest; } }
-        public HttpWebResponse HttpResponse { get { return (HttpWebResponse)Response; } }
-
         public ActionResult Curator()
         {
-            //OriginalRequest = WebRequest.Create("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
-            //OriginalRequest.Method = "POST";
-            //OriginalRequest.ContentType = Enum<FormType>.GetDescription(callParameters.FormType);
-            //OriginalRequest.ContentLength = string("json=true&showRenditions=true").Length;
-
-            //using (var requestWriter = new StreamWriter(OriginalRequest.GetRequestStream()))
-            //{
-            //    requestWriter.Write("");
-            //    requestWriter.Close();
-            //}
-
-            //Response = OriginalRequest.GetResponse();
             string response = WebHelper.GetWebResponse("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
 
             //m["Slots"]["Videos"]
 
             JObject m = JsonConvert.DeserializeObject<JObject>(response);
-            
-            return View();
+            Dictionary<string, string> results = new Dictionary<string, string>();
+
+            foreach (JObject slot in m["Slots"]["Slots"])
+            {
+                string slotData = JsonConvert.SerializeObject(slot["Type"]);
+
+                if (slotData == "\"Slider\"")
+                {
+                    results.Add(JsonConvert.SerializeObject(slot["Thumbnail"]["url"]), JsonConvert.SerializeObject(slot["ObjectId"]));
+                }
+            }
+
+            return View(results);
         }
 
-        public ActionResult Watch()
+        public ActionResult Watch(int id)
         {
-            Video v = new Video()
+            
+            Video v1 = new Video()
             {
                 Id=1,
-                Thumbnail="https://thumbnails.5min.com/10360697/518034831_c.jpg"
+                Thumbnail = "/Content/images/curator_03.png"
             };
-            return View(v);
+            Video v2= new Video()
+            {
+                Id=2,
+                Thumbnail = "/Content/images/curator_10.png"
+            };
+            Video v3 = new Video()
+            {
+                Id=3,
+                Thumbnail = "/Content/images/curator_13.png"
+            };
+            Video v4 = new Video()
+            {
+                Id=4,
+                Thumbnail = "/Content/images/curator_05.png"
+            };
+            Video v5 = new Video()
+            {
+                Id=5,
+                Thumbnail = "/Content/images/curator_21.png"
+            };
+
+            List<Video> list = new List<Video>();
+            list.Add(v1);
+            list.Add(v2);
+            list.Add(v3);
+            list.Add(v4);
+            list.Add(v5);
+
+            ViewBag.LocationBackground = "/Content/images/mobile_03.png";
+
+            return View(list);
         }
 
-        public ActionResult Index()
+        public ActionResult Index(bool afsp = false)
         {
-            StateAgent.Locations.FirstOrDefault(l => l.Viewers.Contains(StateAgent.CurrentViewer));
+            if (afsp)
+            {
+                if (StateAgent.CurrentViewer == null)
+                    return RedirectToAction("Index", "Login");
+                ActiveLocation location = StateAgent.Locations.FirstOrDefault(l => l.Viewers.Contains(StateAgent.CurrentViewer));
+                return Watch(location.Id);
+            }
+
             return View();
         }
 

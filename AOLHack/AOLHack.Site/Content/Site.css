@@ -83,3 +83,36 @@ header, footer, nav, section {
 .TwitterPanel {
     margin-left: 22px;
 }
+
+.Mobile {float: left; 
+         background-color: #808080; }
+
+.Mobile .Splash {
+    background-image: url(images/splash.jpg);
+    width: 640px;
+    height: 1136px;
+}
+
+.Mobile .locationBackground {
+    height: 168px;
+    width: 624px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.Mobile .SelectHeader {
+    font-family: 'FuturaStdMedium';
+    font-size: 46px;
+    text-transform: uppercase;
+    padding-left: 19px;
+}
+
+.Mobile .thumbContainer {
+    width: 645px;
+    padding-left: 7px;
+}
+
+.Mobile .thumbnail {
+    float: left;
+    margin-right: 11px;
+}
