@@ -1,6 +1,6 @@
 ﻿@model dynamic
 
-@Scripts.Render("http://pshared.5min.com/scripts/playerseed.js?sid=577&playlist=1825")
+@Scripts.Render("http://pshared.5min.com/scripts/playerseed.js")
 
 @{
     ViewBag.Title = "Project CampFire";
@@ -20,12 +20,23 @@
         easing          : "elastic",
         duration        : 500,                        
         pauseOnHover    : false
-        }
+        },
         swipe : {
     }
     });
 });</script>
 <h2>@ViewBag.Title</h2>
+<div id="player1">
+    <script>
+        var player = new PlayerSeed('player1');
+        player.playList = '518034012';
+        player.sid = 577;
+        player.width = 700;
+        player.height = 400;
+        player.autoStart = true;
+        player.Load();
+    </script>   
+</div>
 <div id="foo">
 	<img src="https://thumbnails.5min.com/10360697/518034831_c.jpg" width="300" />
 	<img src="https://thumbnails.5min.com/10360697/518034832_c.jpg" width="300" />
