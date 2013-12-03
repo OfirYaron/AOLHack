@@ -14,6 +14,26 @@ namespace AOLHack.Site
 
     public class MvcApplication : HttpApplication
     {
+
+        public void FacadeLocationInit()
+        {
+            var context = new AOLHackEntities();
+            var carlsberg = context.Locations.ToList().FirstOrDefault(l => l.Title == "carlsberg");
+            ActiveLocation activeLocation = new AOLHack.Site.ActiveLocation();
+            activeLocation.Title = carlsberg.Title;
+            StateAgent.Locations.Add(activeLocation);
+        }
+
+        public void FacadePlaylistInit()
+        {
+            var carlsberg = StateAgent.Locations[0];
+            carlsberg.Playlist.Add(new Video() { Id = 518034831 });
+            carlsberg.Playlist.Add(new Video() { Id = 518034832 });
+            carlsberg.Playlist.Add(new Video() { Id = 518034830 });
+            carlsberg.Playlist.Add(new Video() { Id = 518034831 });
+            carlsberg.Playlist.Add(new Video() { Id = 518034832 });
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -30,11 +50,8 @@ namespace AOLHack.Site
             );
 
             //staticly create a 'carslberg' room for tests
-            var context = new AOLHackEntities();
-            var carlsberg = context.Locations.ToList().FirstOrDefault(l => l.Title == "carlsberg");
-            ActiveLocation activeLocation = new AOLHack.Site.ActiveLocation();
-            activeLocation.Title = carlsberg.Title;
-            StateAgent.Locations.Add(activeLocation);
+            FacadeLocationInit();
+            FacadePlaylistInit();
         }
     }
 }

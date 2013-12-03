@@ -11,11 +11,16 @@ namespace AOLHack.Site.Controllers
         //
         // GET: /Home/
 
+        public ActionResult PlayNext()
+        {
+            return Json(new { success = false });
+        }
+
         public ActionResult Index()
         {
             ViewBag.VideoTitle = "Kardashians release most over-the-top Christmas card yet";
-
-            return View();
+            //StateAgent.CurrentLocation.CurrentlyPlayed 
+            return View(StateAgent.CurrentLocation.CurrentlyPlayed);
         }
 
         // GET: /Home/Curator

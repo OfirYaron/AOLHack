@@ -35,7 +35,8 @@ namespace AOLHack.Site.Controllers
             }
 
             StateAgent.CurrentViewer = new Viewer(loggedinUser);
-            
+            selectedlocation.JoinIn();
+
             return RedirectToAction("Curator", "View", null);
         }
 

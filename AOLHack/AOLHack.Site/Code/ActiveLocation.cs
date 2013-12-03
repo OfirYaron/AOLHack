@@ -9,11 +9,40 @@ namespace AOLHack.Site
 
     public class ActiveLocation : Location
     {
-        const int CURATORS = 3; 
-        
+        const int CURATORS = 3;
+        private Video _current;
+
+        public ActiveLocation()
+        {
+            Viewers = new List<Viewer>();
+            Playlist = new List<Video>();
+        }
+
+        public void PlayNext()
+        {
+            _current = Playlist.First();
+            Playlist.Remove(_current);
+        }
+
         public IList<Viewer> Viewers { get; set; }
         public IList<Video> Playlist { get; set; }
-        public Video CurrentlyPlayed { get; set; }
+        public Video CurrentlyPlayed 
+        {
+            get
+            {
+                if ((_current == null) && (Playlist.Count > 0))
+                {
+                    PlayNext();
+
+                    return _current;
+                }
+                else if (_current != null)
+                {
+                    return _current;
+                }
+                return null;
+            }
+        }
 
         public void JoinIn()
         {
