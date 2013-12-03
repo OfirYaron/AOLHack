@@ -64,6 +64,8 @@ namespace AOLHack.Site.Controllers
                     Thumbnail = "/Content/images/curator_03.png"
                 };
 
+            ViewBag.LocationBackground = "/Content/images/mobile_03.png";
+
             return View(v1);
         }
 

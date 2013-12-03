@@ -135,3 +135,32 @@ header, footer, nav, section {
     float: left;
     margin-right: 11px;
 }
+
+.Mobile .videoPanel {
+    margin-top: 20px;
+    margin-left: 8px;
+    float: left;
+}
+
+.Mobile .UserPlaying {
+    float: left;
+}
+
+.Mobile .NowPlaying {
+    float: left;
+    font-size: 24px;
+    color: #CBC3BD;
+    width: 450px;
+    padding-top: 15px;
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+
+.Mobile .NowPlayingPanel {
+    margin-top: 10px;
+}
+
+.Mobile .social {
+    padding-left: 15px;
+    float: left;
+}
