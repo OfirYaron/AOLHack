@@ -7,8 +7,6 @@
 
 <h2>CampFire - Curator</h2>
 
-@Model
-
 <script>$(window).load(function () {
     $("#foo").carouFredSel({
         items: 10,
@@ -17,16 +15,8 @@
     });</script>
 
 <div id="foo">
-	<img src="https://thumbnails.5min.com/10360697/518034831_c.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034832_c.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034830_c.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034831_1.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034832_1.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034830_1.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034831_c.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034832_c.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034830_c.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034831_1.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034832_1.jpg"/>
-	<img src="https://thumbnails.5min.com/10360697/518034830_1.jpg"/>
+    @foreach (string item in Model.Keys)
+    {
+        <img src="@item.Replace("\"","")" /> //@Model[item]
+    }
 </div>
