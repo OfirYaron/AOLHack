@@ -126,7 +126,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CuratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Code\ActiveLocation.cs" />
     <Compile Include="Code\Video.cs" />
@@ -230,7 +229,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Curator\Index.cshtml" />
     <Content Include="Views\Login\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>

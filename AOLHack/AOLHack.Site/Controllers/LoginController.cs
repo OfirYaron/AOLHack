@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AOLHack.Domain;
 
 namespace AOLHack.Site.Controllers
 {
@@ -18,9 +19,14 @@ namespace AOLHack.Site.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(FormCollection form)
+        public ActionResult Index(FormCollection form)//FormCollection form)
         {
-            return View("Welcome");
+            var context = new AOLHackEntities();
+            var loggedinUser = context.Users.Where(u => u.Email == form["email"]);
+
+
+            StateAgent.CurrentViewer = loggedinUser as Viewer;
+            return RedirectToAction("Curate", "View", null);
         }
 
     }

@@ -11,6 +11,16 @@ namespace AOLHack.Site.Controllers
         //
         // GET: /View/
 
+        public ActionResult Curate()
+        {
+            return View();
+        }
+
+        public ActionResult Watch()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             StateAgent.Locations.FirstOrDefault(l => l.Viewers.Contains(StateAgent.CurrentViewer));
