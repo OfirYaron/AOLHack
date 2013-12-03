@@ -8,12 +8,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="CurrentUser"><img src="~/Content/images/CurrentUser.png"/></div>
+<div class="CurrentUser" onclick="CampFire.PlayNext();"><img src="~/Content/images/CurrentUser.png"/></div>
 <div class="TVTitle">@ViewBag.VideoTitle</div>
 <div id="player1" class="TVPlayer">
     <div class="Meter"><img src="~/Content/images/meter.png" /></div>
     <script>
-        CampFire.InitPlayer();
+        CampFire.InitPlayer(@Model.Id);
     </script>   
 </div>
 
@@ -49,3 +49,20 @@
 <div class="TwitterPanel">
     <img src="~/Content/images/TwitterPlaceHolder.png" />
 </div>
+
+<script type="text/javascript">
+    function getSocialMeta() {
+        jQuery.post('/home/getSocialMeta', {}, function (data) {
+            jQuery(".TVUSersList").empty();
+            for (var i = 0; i < data.userIds.length; i++) {
+                jQuery(".TVUSersList").append("<div><img src='/Content/images/Thumb" + data.userIds[i] + ".png'/></div>");
+            }
+        }, "json");
+    }
+
+    jQuery(document).ready(function () {
+        setInterval(function () {
+            getSocialMeta();
+        },5000);
+    });
+</script>
