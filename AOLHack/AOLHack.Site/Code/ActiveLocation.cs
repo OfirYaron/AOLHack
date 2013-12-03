@@ -6,8 +6,11 @@ using System.Web;
 
 namespace AOLHack.Site
 {
+
     public class ActiveLocation : Location
     {
+        const int CURATORS = 3; 
+        
         public IList<Viewer> Viewers { get; set; }
         public IList<Video> Playlist { get; set; }
         public Video CurrentlyPlayed { get; set; }
@@ -15,7 +18,12 @@ namespace AOLHack.Site
         public void JoinIn()
         {
             if (!Viewers.Contains(StateAgent.CurrentViewer))
+            {
+                if ((Viewers.Count(v => v.Type == ViewerType.Curator) < CURATORS) && (Playlist.Count < CURATORS * 2))
+                    StateAgent.CurrentViewer.Type = ViewerType.Curator;
+
                 Viewers.Add(StateAgent.CurrentViewer);
+            }
         }
 
         public void Leave()

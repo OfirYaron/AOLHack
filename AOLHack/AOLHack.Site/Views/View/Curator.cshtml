@@ -11,18 +11,24 @@
 
     // Using default configuration
     $("#foo").carouFredSel({
-        circular: false,
-        infinite: false,
+        circular: true,
+        infinite: true,
         items: null,
-        direction           : "right",
+        padding: [10, 10, 10, 10],
+        responsive: true,
         scroll : {
-            items           : 1,
-            easing          : "elastic",
+            items           : null,
+            easing          : "linear",
             duration        : 500,                        
             pauseOnHover    : false
         },
-        swipe : {
-        }
+        swipe: {
+            onTouch: true,
+            onMouse: true
+        },
+        auto: {
+        play: false
+    },
     });
 });</script>
 
