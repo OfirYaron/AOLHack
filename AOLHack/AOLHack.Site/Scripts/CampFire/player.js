@@ -6,6 +6,7 @@
         player.width = 1024;
         player.height = 576;
         player.autoStart = true;
+        player.playerActions = 16391;
         player.Load();
 
         return player;
