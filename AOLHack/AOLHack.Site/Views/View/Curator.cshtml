@@ -1,22 +1,35 @@
-﻿@model dynamic
+﻿@using AOLHack.Site
+@model List<AOLHack.Site.Video>
 
 @{
     ViewBag.Title = "CampFire - Curator";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CampFire - Curator</h2>
 
-<script>$(window).load(function () {
-    $("#foo").carouFredSel({
-        items: 10,
-        auto: { play: false }
-    });
-    });</script>
+@{
+    ViewBag.Title = "CampFireTV";
+    Layout = "~/Views/Shared/_Slim.cshtml";
+}
 
-<div id="foo">
-    @foreach (string item in Model.Keys)
-    {
-        <img src="@item.Replace("\"","")" /> //@Model[item]
-    }
+<div class="Mobile">
+    <div class="header"><img src="~/Content/images/mobile_01.png" /></div>
+    <div class="locationBackground" style="background-image: url(@ViewBag.LocationBackground);">
+        <div class="userIcon"><img src="~/Content/images/user.png" /></div>
+        <div class="userName">Uri A.</div>
+        <div class="Location">Joe's Pub, NYC</div>
+    </div>
+    <div class="SelectHeader">Select a Video to Play:</div>
+
+    <div class="thumbContainer">
+        @foreach (Video v in Model)
+        {
+            <div class="thumbnail">
+                <img src="@v.Thumbnail"/>
+            </div>
+        }
+        <div class="thumbnail">
+            <img src="~/Content/images/curator_19.png" />
+        </div>
+    </div>
 </div>

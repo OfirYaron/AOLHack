@@ -87,6 +87,25 @@ header, footer, nav, section {
 .Mobile {float: left; 
          background-color: #808080; }
 
+.Mobile .userIcon {
+    position: relative;
+    top: 35px;
+    left: 13px;
+}
+
+.Mobile .userName {
+    position: relative;
+    left: 138px;
+    top: -50px;
+    font-size: 30px;
+}
+.Mobile .Location {
+    position: relative;
+    top: -53px;
+    left: 160px;
+    font-size: 24px;
+}
+
 .Mobile .Splash {
     background-image: url(images/splash.jpg);
     width: 640px;

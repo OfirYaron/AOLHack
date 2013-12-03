@@ -1,26 +1,17 @@
 ﻿@using AOLHack.Site
-@model List<AOLHack.Site.Video>
+@model Video
 
 @{
     ViewBag.Title = "CampFireTV";
     Layout = "~/Views/Shared/_Slim.cshtml";
-    ViewBag.BodyClass = "WatchBody";
 }
 
 <div class="Mobile">
     <div class="header"><img src="~/Content/images/mobile_01.png" /></div>
-    <div class="locationBackground" style="background-image: url(@ViewBag.LocationBackground);"></div>
-    <div class="SelectHeader">Select a Video to Play:</div>
-
-    <div class="thumbContainer">
-        @foreach (Video v in Model)
-        {
-            <div class="thumbnail">
-                <img src="@v.Thumbnail"/>
-            </div>
-        }
-        <div class="thumbnail">
-            <img src="~/Content/images/curator_19.png" />
-        </div>
+    <div class="locationBackground" style="background-image: url(@ViewBag.LocationBackground);">
+        <div class="userIcon"><img src="~/Content/images/user.png" /></div>
+        <div class="userName">Uri A.</div>
+        <div class="Location">Joe's Pub, NYC</div>
     </div>
+    
 </div>

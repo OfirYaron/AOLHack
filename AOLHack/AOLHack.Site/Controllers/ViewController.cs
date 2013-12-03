@@ -15,54 +15,31 @@ namespace AOLHack.Site.Controllers
     {
         //
         // GET: /View/
-        public ActionResult Curator()
+        public ActionResult Curator(int id)
         {
-            string response = WebHelper.GetWebResponse("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
-
-            //m["Slots"]["Videos"]
-
-            JObject m = JsonConvert.DeserializeObject<JObject>(response);
-            Dictionary<string, string> results = new Dictionary<string, string>();
-
-            foreach (JObject slot in m["Slots"]["Slots"])
-            {
-                string slotData = JsonConvert.SerializeObject(slot["Type"]);
-
-                if (slotData == "\"Slider\"")
-                {
-                    results.Add(JsonConvert.SerializeObject(slot["Thumbnail"]["url"]), JsonConvert.SerializeObject(slot["ObjectId"]));
-                }
-            }
-
-            return View(results);
-        }
-
-        public ActionResult Watch(int id)
-        {
-            
             Video v1 = new Video()
             {
-                Id=1,
+                Id = 1,
                 Thumbnail = "/Content/images/curator_03.png"
             };
-            Video v2= new Video()
+            Video v2 = new Video()
             {
-                Id=2,
+                Id = 2,
                 Thumbnail = "/Content/images/curator_10.png"
             };
             Video v3 = new Video()
             {
-                Id=3,
+                Id = 3,
                 Thumbnail = "/Content/images/curator_13.png"
             };
             Video v4 = new Video()
             {
-                Id=4,
+                Id = 4,
                 Thumbnail = "/Content/images/curator_05.png"
             };
             Video v5 = new Video()
             {
-                Id=5,
+                Id = 5,
                 Thumbnail = "/Content/images/curator_21.png"
             };
 
@@ -78,6 +55,18 @@ namespace AOLHack.Site.Controllers
             return View(list);
         }
 
+        public ActionResult Watch(int id)
+        {
+
+            Video v1 = new Video()
+                {
+                    Id = 1,
+                    Thumbnail = "/Content/images/curator_03.png"
+                };
+
+            return View(v1);
+        }
+
         public ActionResult Index(bool afsp = false)
         {
             if (afsp)
@@ -85,7 +74,7 @@ namespace AOLHack.Site.Controllers
                 if (StateAgent.CurrentViewer == null)
                     return RedirectToAction("Index", "Login");
                 ActiveLocation location = StateAgent.Locations.FirstOrDefault(l => l.Viewers.Contains(StateAgent.CurrentViewer));
-                return Watch(location.Id);
+                return Curator(location.Id);
             }
 
             return View();
