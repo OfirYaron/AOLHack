@@ -42,6 +42,12 @@ header, footer, nav, section {
     margin-left: 22px;
 }
 
+.TVPlayer .Meter {
+    position: absolute;
+    top: 24px;
+    left: 910px;
+}
+
 .TVUSersList {
     float: left;
     margin-left: 12px;
