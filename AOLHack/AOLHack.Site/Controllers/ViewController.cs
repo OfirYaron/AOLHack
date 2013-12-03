@@ -18,20 +18,20 @@ namespace AOLHack.Site.Controllers
         public HttpWebResponse HttpResponse { get { return (HttpWebResponse)Response; } }
 
         public ActionResult Curator()
-        {
-            //OriginalRequest = WebRequest.Create("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
-            //OriginalRequest.Method = "POST";
-            //OriginalRequest.ContentType = Enum<FormType>.GetDescription(callParameters.FormType);
-            //OriginalRequest.ContentLength = string("json=true&showRenditions=true").Length;
+        {/*
+            OriginalRequest = WebRequest.Create("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
+            OriginalRequest.Method = "POST";
+            OriginalRequest.ContentType = "JSON";
+            OriginalRequest.ContentLength = ("json=true&showRenditions=true").Length;
 
-            //using (var requestWriter = new StreamWriter(OriginalRequest.GetRequestStream()))
-            //{
-            //    requestWriter.Write("");
-            //    requestWriter.Close();
-            //}
+            using (var requestWriter = new StreamWriter(OriginalRequest.GetRequestStream()))
+            {
+                requestWriter.Write("");
+                requestWriter.Close();
+            }
 
-            //Response = OriginalRequest.GetResponse();
-
+            Response = OriginalRequest.GetResponse();
+            */
             return View();
         }
 
