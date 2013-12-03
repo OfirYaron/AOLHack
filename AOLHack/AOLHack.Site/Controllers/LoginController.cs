@@ -13,9 +13,9 @@ namespace AOLHack.Site.Controllers
         // GET: /Login/
 
         [HttpGet]
-        public ActionResult Index(string location)
+        public ActionResult Index(int locationId)
         {
-            return View(location as object);
+            return View(locationId);
         }
 
         [HttpPost]
@@ -25,19 +25,19 @@ namespace AOLHack.Site.Controllers
             var users = context.Users.ToList();
             var loggedinUser = users.FirstOrDefault(u => u.Email == form["email"]);
 
-            var selectedlocation = StateAgent.Locations.FirstOrDefault(l => l.Title == form["location"]);
+            var selectedlocation = StateAgent.Locations.FirstOrDefault(l => l.Id == int.Parse(form["locationId"]));
 
             if ((loggedinUser == null) || (selectedlocation == null))
             {
                 // sign up in future
                 //return ToString login
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { locationId = int.Parse(form["locationId"]) });
             }
 
             StateAgent.CurrentViewer = new Viewer(loggedinUser);
             selectedlocation.JoinIn();
 
-            return RedirectToAction("Curator", "View", null);
+            return RedirectToAction("Curator", "View", new { id = int.Parse(form["locationId"]) });
         }
 
     }
