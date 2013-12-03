@@ -15,30 +15,13 @@
         infinite: true,
         width: "variable",
         items: null,
-        padding: [10, 10, 10, 10],
+        // padding: [10, 10, 10, 10],
         scroll : {
             items           : null,
             easing          : "linear",
             duration        : 500,                        
             pauseOnHover: false,
-            onAfter: function (data) {
-                var txt = "";
-                data.items.visible.each(function () { txt += "<li>" + $(this).attr("src").split("/").pop() + "</li>"; });
-                $("#foo_log").html("<p>Now showing images:</p><ul>" + txt + "</ul>");
-            }
         },
-        prev    : {
-            button  : "#foo_prev",
-            onBefore: function() {
-            $("#foo1_log").html("<p>Started scrolling to the <strong>left</strong>.</p>");
-            }
-        },
-        next    : {
-    button  : "#foo_next",
-    onBefore: function() {
-    $("#foo1_log").html("<p>Started scrolling to the <strong>right</strong>.</p>");
-    }
-    },
         swipe: {
             onTouch: true,
             onMouse: true
@@ -46,20 +29,12 @@
         auto: {
         play: false
         },
-        onCreate: function( data ) {
-            var txt = "";
-            data.items.each(function() { txt += "<li>" + $(this).attr("src").split("/").pop() + "</li>"; });
-            $("#foo_log").html("<p>Carousel created showing images:</p><ul>" + txt + "</ul>");
-            },
     });
+
 });</script>
 
 <div id="foo">
-    <div class="clearfix"></div>
-    <a class="prev" id="foo_prev" href="#"><span>prev</span></a>
-    <a class="next" id="foo_next" href="#"><span>next</span></a>
-    <div class="logbox" id="foo_log"><p>Click the previous- or next-button</p></div>
-	<img src="https://thumbnails.5min.com/10360697/518034831_c.jpg" width="200" />
+	<a href="http://on.aol.com/video/518034831"><img src="https://thumbnails.5min.com/10360697/518034831_c.jpg" width="300" /></a>
 	<img src="https://thumbnails.5min.com/10360697/518034832_c.jpg" width="300" />
 	<img src="https://thumbnails.5min.com/10360697/518034830_c.jpg" width="300" />
 	<img src="https://thumbnails.5min.com/10360697/518034831_1.jpg" width="300" />
