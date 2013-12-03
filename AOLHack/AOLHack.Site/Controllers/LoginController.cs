@@ -11,9 +11,16 @@ namespace AOLHack.Site.Controllers
         //
         // GET: /Login/
 
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(string location)
         {
-            return View();
+            return View(location as object);
+        }
+
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            return View("Welcome");
         }
 
     }

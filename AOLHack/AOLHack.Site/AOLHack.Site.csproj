@@ -231,6 +231,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Curator\Index.cshtml" />
+    <Content Include="Views\Login\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Management\Index.cshtml" />
