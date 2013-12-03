@@ -1,11 +1,32 @@
-﻿body {
+﻿@font-face
+{
+    font-family: 'FuturaStdMedium';
+    src: url('fonts/futurastd_medium-webfont.eot');
+    src: url('fonts/futurastd_medium-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/futurastd_medium-webfont.woff') format('woff'), url('fonts/futurastd_medium-webfont.ttf') format('truetype'), url('/fonts/futurastd_medium-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+    font-family: "FuturaStdMedium", Verdana, Helvetica, Sans-Serif;
+    color: #fff;
+    background-color: #291610;
 }
 
 header, footer, nav, section {
     display: block;
 }
 
+.TVTitle {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-family: 'FuturaStdMedium';
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 26px;
+  margin: 70px 20px 20px;
+  text-transform: uppercase;
+  z-index: 200;
+}

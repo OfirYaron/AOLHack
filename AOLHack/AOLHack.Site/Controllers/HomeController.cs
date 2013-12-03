@@ -13,9 +13,12 @@ namespace AOLHack.Site.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.VideoTitle = "Kardashians release most over-the-top Christmas card yet";
+
             return View();
         }
 
+        // GET: /Home/Curator
         public ActionResult Curator()
         {
             return View();

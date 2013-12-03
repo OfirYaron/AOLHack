@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AOLHack.sdf" />
+    <Content Include="Content\fonts\futurastd_medium-webfont.svg" />
     <Content Include="Content\images\CurrentUser.png" />
     <Content Include="Content\images\Mayor.png" />
     <Content Include="Content\images\Thumb1.png" />
@@ -163,6 +164,9 @@
     <Content Include="Content\normalize.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\fonts\futurastd_medium-webfont.eot" />
+    <Content Include="Content\fonts\futurastd_medium-webfont.ttf" />
+    <Content Include="Content\fonts\futurastd_medium-webfont.woff" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\CampFire\player.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
