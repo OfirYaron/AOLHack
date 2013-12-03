@@ -144,6 +144,7 @@
     <Content Include="Content\fonts\futurastd_medium-webfont.svg" />
     <Content Include="Content\images\CurrentUser.png" />
     <Content Include="Content\images\Mayor.png" />
+    <Content Include="Content\images\qrcode.png" />
     <Content Include="Content\images\Thumb1.png" />
     <Content Include="Content\images\Thumb10.png" />
     <Content Include="Content\images\Thumb11.png" />

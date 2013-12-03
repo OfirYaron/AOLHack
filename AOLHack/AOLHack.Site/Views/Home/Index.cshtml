@@ -8,9 +8,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="TVTitle">@ViewBag.VideoTitle</h2>
-<div id="player1">
+<div class="CurrentUser"><img src="~/Content/images/CurrentUser.png"/></div>
+<div class="TVTitle">@ViewBag.VideoTitle</div>
+<div id="player1" class="TVPlayer">
     <script>
-            CampFire.InitPlayer();
+        CampFire.InitPlayer();
     </script>   
+</div>
+
+<div class="TVUSersList">
+    <div><img src="/Content/images/Thumb1.png"/></div>
+    <div><img src="/Content/images/Thumb2.png"/></div>
+    <div><img src="/Content/images/Thumb3.png"/></div>
+    <div><img src="/Content/images/Thumb5.png"/></div>
+    <div><img src="/Content/images/Thumb6.png"/></div>
+    <div><img src="/Content/images/Thumb7.png"/></div>
+    <div><img src="/Content/images/Thumb8.png"/></div>
+    <div><img src="/Content/images/Thumb9.png"/></div>
+    <div><img src="/Content/images/Thumb11.png"/></div>
+    <div><img src="/Content/images/Thumb12.png"/></div>
+    <div><img src="/Content/images/Thumb13.png"/></div>
+    <div><img src="/Content/images/Thumb14.png"/></div>
+    <div><img src="/Content/images/Thumb15.png"/></div>
+    <div><img src="/Content/images/Thumb16.png"/></div>
+</div>
+
+<div class="MayorPanel">
+    <div class="MayorText">
+        <span id="RoomName">Joe's Pub</span>
+        <br/><br/>
+        <span>Mayor:</span>
+        <br/>
+        <span>Queen M.</span>  
+    </div>
+    <div class="Mayor"><img src="/Content/images/Mayor.png"/></div>
+</div>
+<div class="TwitterPanel">
+    <img src="~/Content/images/TwitterPlaceHolder.png" />
 </div>
