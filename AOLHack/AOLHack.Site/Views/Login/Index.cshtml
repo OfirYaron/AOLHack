@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<div>Welcome to @Model</div>
+<div>Please login with your email:</div>
+<form method="post" action="/Login">
+    <p>
+        <input type="text" name="email" value="" placeholder="Email"></p>
+    <p class="submit">
+        <input type="submit" name="commit" value="Login"></p>
+</form>
