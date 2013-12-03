@@ -25,12 +25,17 @@ namespace AOLHack.Site.Controllers
             var users = context.Users.ToList();
             var loggedinUser = users.FirstOrDefault(u => u.Email == form["email"]);
 
-            if (loggedinUser == null)
+            var selectedlocation = StateAgent.Locations.FirstOrDefault(l => l.Title == form["location"]);
+
+            if ((loggedinUser == null) || (selectedlocation == null))
             {
                 // sign up in future
+                //return ToString login
+                return RedirectToAction("Index");
             }
 
-            StateAgent.CurrentViewer = loggedinUser as Viewer;
+            StateAgent.CurrentViewer = new Viewer(loggedinUser);
+            
             return RedirectToAction("Curator", "View", null);
         }
 

@@ -18,26 +18,31 @@ namespace AOLHack.Site.Controllers
         public HttpWebResponse HttpResponse { get { return (HttpWebResponse)Response; } }
 
         public ActionResult Curator()
-        {/*
-            OriginalRequest = WebRequest.Create("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
-            OriginalRequest.Method = "POST";
-            OriginalRequest.ContentType = "JSON";
-            OriginalRequest.ContentLength = ("json=true&showRenditions=true").Length;
+        {
+            //OriginalRequest = WebRequest.Create("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
+            //OriginalRequest.Method = "POST";
+            //OriginalRequest.ContentType = Enum<FormType>.GetDescription(callParameters.FormType);
+            //OriginalRequest.ContentLength = string("json=true&showRenditions=true").Length;
 
-            using (var requestWriter = new StreamWriter(OriginalRequest.GetRequestStream()))
-            {
-                requestWriter.Write("");
-                requestWriter.Close();
-            }
+            //using (var requestWriter = new StreamWriter(OriginalRequest.GetRequestStream()))
+            //{
+            //    requestWriter.Write("");
+            //    requestWriter.Close();
+            //}
 
-            Response = OriginalRequest.GetResponse();
-            */
+            //Response = OriginalRequest.GetResponse();
+
             return View();
         }
 
         public ActionResult Watch()
         {
-            return View();
+            Video v = new Video()
+            {
+                Id=1,
+                Thumbnail="https://thumbnails.5min.com/10360697/518034831_c.jpg"
+            };
+            return View(v);
         }
 
         public ActionResult Index()
@@ -66,6 +71,12 @@ namespace AOLHack.Site.Controllers
                 return Json(new { success = false }, JsonRequestBehavior.AllowGet);
 
             StateAgent.CurrentLocation.CurrentlyPlayed.SkipRequests++;
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult PickVideo(int videoId)
+        {
+            StateAgent.CurrentLocation.PickVideo(videoId);
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
 

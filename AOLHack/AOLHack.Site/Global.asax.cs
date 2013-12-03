@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AOLHack.Domain;
+using System;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -27,6 +28,13 @@ namespace AOLHack.Site
                 "{controller}/{action}/{id}",                           // URL with parameters
                 new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
             );
+
+            //staticly create a 'carslberg' room for tests
+            var context = new AOLHackEntities();
+            var carlsberg = context.Locations.ToList().FirstOrDefault(l => l.Title == "carlsberg");
+            ActiveLocation activeLocation = new AOLHack.Site.ActiveLocation();
+            activeLocation.Title = carlsberg.Title;
+            StateAgent.Locations.Add(activeLocation);
         }
     }
 }

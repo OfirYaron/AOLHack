@@ -31,5 +31,15 @@ namespace AOLHack.Site
             if (Viewers.Contains(StateAgent.CurrentViewer))
                 Viewers.Remove(StateAgent.CurrentViewer);
         }
+
+        public void PickVideo(int videoId)
+        {
+            //API CALL
+            if (Viewers.Contains(StateAgent.CurrentViewer) && StateAgent.CurrentViewer.Type == ViewerType.Curator)
+                Playlist.Add(new Video()
+                {
+                    Id = videoId
+                });
+        }
     }
 }
