@@ -15,32 +15,26 @@ namespace AOLHack.Site.Controllers
     {
         //
         // GET: /View/
-        public WebRequest OriginalRequest { get; set; }
-        public WebResponse Response { get; set; }
-        public HttpWebRequest HttpRequest { get { return (HttpWebRequest)OriginalRequest; } }
-        public HttpWebResponse HttpResponse { get { return (HttpWebResponse)Response; } }
-
         public ActionResult Curator()
         {
-            //OriginalRequest = WebRequest.Create("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
-            //OriginalRequest.Method = "POST";
-            //OriginalRequest.ContentType = Enum<FormType>.GetDescription(callParameters.FormType);
-            //OriginalRequest.ContentLength = string("json=true&showRenditions=true").Length;
-
-            //using (var requestWriter = new StreamWriter(OriginalRequest.GetRequestStream()))
-            //{
-            //    requestWriter.Write("");
-            //    requestWriter.Close();
-            //}
-
-            //Response = OriginalRequest.GetResponse();
             string response = WebHelper.GetWebResponse("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
 
             //m["Slots"]["Videos"]
 
             JObject m = JsonConvert.DeserializeObject<JObject>(response);
-            
-            return View();
+            Dictionary<string, string> results = new Dictionary<string, string>();
+
+            foreach (JObject slot in m["Slots"]["Slots"])
+            {
+                string slotData = JsonConvert.SerializeObject(slot["Type"]);
+
+                if (slotData == "\"Slider\"")
+                {
+                    results.Add(JsonConvert.SerializeObject(slot["Thumbnail"]["url"]), JsonConvert.SerializeObject(slot["ObjectId"]));
+                }
+            }
+
+            return View(results);
         }
 
         public ActionResult Watch()
