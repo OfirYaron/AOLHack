@@ -83,3 +83,9 @@ header, footer, nav, section {
 .TwitterPanel {
     margin-left: 22px;
 }
+
+.Mobile .Splash {
+    background-image: url(images/splash.jpg);
+    width: 640px;
+    height: 1136px;
+}

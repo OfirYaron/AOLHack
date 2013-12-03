@@ -37,19 +37,26 @@ namespace AOLHack.Site.Controllers
             return View(results);
         }
 
-        public ActionResult Watch()
+        public ActionResult Watch(int id)
         {
             Video v = new Video()
             {
-                Id=1,
+                Id=id,
                 Thumbnail="https://thumbnails.5min.com/10360697/518034831_c.jpg"
             };
             return View(v);
         }
 
-        public ActionResult Index()
+        public ActionResult Index(bool afsp = false)
         {
-            StateAgent.Locations.FirstOrDefault(l => l.Viewers.Contains(StateAgent.CurrentViewer));
+            if (afsp)
+            {
+                if (StateAgent.CurrentViewer == null)
+                    return RedirectToAction("Index", "Login");
+                ActiveLocation location = StateAgent.Locations.FirstOrDefault(l => l.Viewers.Contains(StateAgent.CurrentViewer));
+                return Watch(location.Id);
+            }
+
             return View();
         }
 
