@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.IO;
+using AOLHack.Site.Code;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace AOLHack.Site.Controllers
 {
@@ -19,6 +22,7 @@ namespace AOLHack.Site.Controllers
 
         public ActionResult Curator()
         {
+<<<<<<< HEAD
             //OriginalRequest = WebRequest.Create("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
             //OriginalRequest.Method = "POST";
             //OriginalRequest.ContentType = Enum<FormType>.GetDescription(callParameters.FormType);
@@ -31,6 +35,14 @@ namespace AOLHack.Site.Controllers
             //}
 
             //Response = OriginalRequest.GetResponse();
+=======
+            string response = WebHelper.GetWebResponse("http://api.on.aol.com/v2.0/channel/get/0?json=true&showRenditions=true");
+
+            //m["Slots"]["Videos"]
+
+            JObject m = JsonConvert.DeserializeObject<JObject>(response);
+            
+>>>>>>> d88f18d43db2f5417cbffe0da47f30d3c58fc542
 
             return View();
         }
