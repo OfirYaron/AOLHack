@@ -20,6 +20,7 @@ namespace AOLHack.Site
             var context = new AOLHackEntities();
             var carlsberg = context.Locations.ToList().FirstOrDefault(l => l.Title == "carlsberg");
             ActiveLocation activeLocation = new AOLHack.Site.ActiveLocation();
+            activeLocation.Id = 1;
             activeLocation.Title = carlsberg.Title;
             StateAgent.Locations.Add(activeLocation);
         }
