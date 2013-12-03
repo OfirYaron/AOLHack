@@ -39,12 +39,43 @@ namespace AOLHack.Site.Controllers
 
         public ActionResult Watch(int id)
         {
-            Video v = new Video()
+            
+            Video v1 = new Video()
             {
-                Id=id,
-                Thumbnail="https://thumbnails.5min.com/10360697/518034831_c.jpg"
+                Id=1,
+                Thumbnail = "/Content/images/curator_03.png"
             };
-            return View(v);
+            Video v2= new Video()
+            {
+                Id=2,
+                Thumbnail = "/Content/images/curator_10.png"
+            };
+            Video v3 = new Video()
+            {
+                Id=3,
+                Thumbnail = "/Content/images/curator_13.png"
+            };
+            Video v4 = new Video()
+            {
+                Id=4,
+                Thumbnail = "/Content/images/curator_05.png"
+            };
+            Video v5 = new Video()
+            {
+                Id=5,
+                Thumbnail = "/Content/images/curator_21.png"
+            };
+
+            List<Video> list = new List<Video>();
+            list.Add(v1);
+            list.Add(v2);
+            list.Add(v3);
+            list.Add(v4);
+            list.Add(v5);
+
+            ViewBag.LocationBackground = "/Content/images/mobile_03.png";
+
+            return View(list);
         }
 
         public ActionResult Index(bool afsp = false)
